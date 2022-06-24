@@ -23,6 +23,11 @@ public class Cart {
         this.productService = productService;
         products = new ArrayList<>();
     }
+    @PostConstruct
+    public void init(){
+        products = new ArrayList<>();
+    }
+
 
     public void addProduct(long id){
         products.add(productService.findProductById(id));
