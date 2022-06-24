@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -21,7 +22,6 @@ public class Cart {
     @Autowired
     public Cart(ProductService productService){
         this.productService = productService;
-        products = new ArrayList<>();
     }
     @PostConstruct
     public void init(){
@@ -34,10 +34,14 @@ public class Cart {
     }
 
     public void deleteProductById(long id){
-        products.remove(productService.findProductById(id));
+        for (int i = 0; i < products.size() ; i++) {
+            if (products.get(i).getId() ==  id){
+                products.remove(i);
+            }
+        }
     }
 
     public List<Product> showAll(){
-        return products;
+        return Collections.unmodifiableList(products);
     }
 }
