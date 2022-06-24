@@ -1,12 +1,22 @@
 package ru.geekbrains.spring.context;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+
 public class Product {
-    private long id;
+    private Long id;
     private String name;
-    private long price;
+    private int price;
 
     public Product(){
 
+    }
+
+    public Product(Long id, String name, int price){
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
     public long getId(){
@@ -29,13 +39,14 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(long price){
+    public void setPrice(int price){
         this.price = price;
     }
 
-    private Product(long id, String name, long price){
-        this.id = id;
-        this.name = name;
-        this.price = price;
+
+
+    @Override
+    public String toString() {
+        return "[id: " + id + ", " + "name: " + name + ", " + "price: " + price + "]";
     }
 }
