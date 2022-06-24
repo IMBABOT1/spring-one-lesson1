@@ -34,9 +34,10 @@ public class Cart {
     }
 
     public void deleteProductById(long id){
-        for (int i = 0; i < products.size() ; i++) {
-            if (products.get(i).getId() ==  id){
-                products.remove(i);
+        for (Product p : products){
+            if (p.getId() == id){
+                products.remove(p);
+                break;
             }
         }
     }
